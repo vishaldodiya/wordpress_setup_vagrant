@@ -56,7 +56,7 @@ sudo printf " server {
         listen   80; 
         listen   [::]:80;
 
-	server_name example.com;        
+	server_name $domain;        
 	root /var/www/$domain;
         index index.html index.htm index.php;
 	
@@ -99,7 +99,7 @@ sudo sed -i -e '1 i\127.0.0.1      '$domain /etc/hosts
 #Setting up database configuration
 
 sudo printf "<?php
-	define('DB_NAME', '"$domain"'_db');
+	define('DB_NAME', '"$domain"_db');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', '');
 	define('DB_HOST', 'localhost');
@@ -125,7 +125,7 @@ sudo printf "<?php
 	define( 'WP_AUTO_UPDATE_CORE', false );
 	
 	
-?>" > /var/www/example.com/wp-config.php
+?>" > /var/www/$domain/wp-config.php
 
 #sudo cp /var/www/example.com/wp-config-sample.php /var/www/example.com/wp-config.php
 
